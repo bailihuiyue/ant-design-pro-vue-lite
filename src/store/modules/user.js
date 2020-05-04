@@ -39,8 +39,8 @@ const user = {
         login(userInfo).then(response => {
           const result = response.result
           Vue.ls.set(ACCESS_TOKEN, result.token, 7 * 24 * 60 * 60 * 1000)
-          Vue.ls.set(PERMISSION, '')
-          // TODO:1.项目放到git上 2.改造路由成为平常项目用的那样 3.格式化问题不要报错,改成警告
+          Vue.ls.set(PERMISSION, Array.isArray(result.role) ? result.role : result.role.split(','))
+          // TODO:2.改造路由成为平常项目用的那样 3.格式化问题不要报错,改成警告
           commit('SET_TOKEN', result.token)
           resolve()
         }).catch(error => {
@@ -54,17 +54,16 @@ const user = {
       return new Promise((resolve, reject) => {
         getInfo().then(response => {
           const result = response.result
-
-          if (result.role && result.role.permissions.length > 0) {
-            const role = result.role
-            role.permissions = result.role.permissions
-            role.permissions.map(per => {
-              if (per.actionEntitySet != null && per.actionEntitySet.length > 0) {
-                const action = per.actionEntitySet.map(action => { return action.action })
-                per.actionList = action
-              }
-            })
-            role.permissionList = role.permissions.map(permission => { return permission.permissionId })
+          if (result.role /* && result.role.permissions.length > 0 */) {
+            // const role = result.role
+            // role.permissions = result.role.permissions
+            // role.permissions.map(per => {
+            //   if (per.actionEntitySet != null && per.actionEntitySet.length > 0) {
+            //     const action = per.actionEntitySet.map(action => { return action.action })
+            //     per.actionList = action
+            //   }
+            // })
+            // role.permissionList = role.permissions.map(permission => { return permission.permissionId })
             commit('SET_ROLES', result.role)
             commit('SET_INFO', result)
           } else {
@@ -72,7 +71,7 @@ const user = {
           }
 
           commit('SET_NAME', { name: result.name, welcome: welcome() })
-          commit('SET_AVATAR', result.avatar)
+          // commit('SET_AVATAR', result.avatar)
 
           resolve(response)
         }).catch(error => {

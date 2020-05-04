@@ -22,6 +22,7 @@ router.beforeEach((to, from, next) => {
       next({ path: defaultRoutePath })
       NProgress.done()
     } else {
+      console.log(store.getters.roles)
       if (store.getters.roles.length === 0) {
         store
           .dispatch('GetInfo')
