@@ -7,7 +7,7 @@ import App from './App.vue'
 import router from './router'
 import store from './store/'
 import { VueAxios } from './utils/request'
-
+import i18n from '@/locales/i18n'
 // mock
 // WARNING: `mockjs` NOT SUPPORT `IE` PLEASE DO NOT USE IN `production` ENV.
 import './mock'
@@ -28,6 +28,7 @@ Vue.use(Dialog)
 new Vue({
   router,
   store,
+  i18n,
   created: bootstrap,
   render: h => h(App)
 }).$mount('#app')

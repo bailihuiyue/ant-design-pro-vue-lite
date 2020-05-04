@@ -248,7 +248,7 @@ export default {
       })
     },
     loginSuccess (res) {
-      console.log(res)
+      // console.log(res)
       // check res.homePage define, set $router.push name res.homePage
       // Why not enter onComplete
       /*

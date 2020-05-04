@@ -1,24 +1,23 @@
 <template>
   <a-config-provider :locale="locale">
     <div id="app">
-      <router-view/>
+      <router-view />
     </div>
   </a-config-provider>
 </template>
 
 <script>
 import zhCN from 'ant-design-vue/lib/locale-provider/zh_CN'
+import enUS from 'ant-design-vue/lib/locale-provider/en_US'
 import { AppDeviceEnquire } from '@/utils/mixin'
 
 export default {
   mixins: [AppDeviceEnquire],
   data () {
     return {
-      locale: zhCN
+      locale: window.localStorage.getItem('lang') === 'en' ? enUS : zhCN
     }
   },
-  mounted () {
-
-  }
+  mounted () {}
 }
 </script>

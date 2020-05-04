@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import { login, getInfo, logout } from '@/api/login'
-import { ACCESS_TOKEN, PERMISSION } from '@/store/mutation-types'
-import { welcome } from '@/utils/util'
+import { ACCESS_TOKEN, PERMISSION, USER_INFO } from '@/store/mutation-types'
+// import { welcome } from '@/utils/util'
 
 const user = {
   state: {
@@ -38,9 +38,11 @@ const user = {
       return new Promise((resolve, reject) => {
         login(userInfo).then(response => {
           const result = response.result
+          console.log(result)
           Vue.ls.set(ACCESS_TOKEN, result.token, 7 * 24 * 60 * 60 * 1000)
           Vue.ls.set(PERMISSION, Array.isArray(result.role) ? result.role : result.role.split(','))
-          // TODO:2.改造路由成为平常项目用的那样 3.格式化问题不要报错,改成警告
+          Vue.ls.set(USER_INFO, result)
+          // TODO:1.mock移到server端 2.修改axios 3.格式化问题不要报错,改成警告 4.去掉登录后显示的欢迎5.添加语言切换按钮 6.减小clone的包大小
           commit('SET_TOKEN', result.token)
           resolve()
         }).catch(error => {
@@ -49,7 +51,7 @@ const user = {
       })
     },
 
-    // 获取用户信息
+    // 获取用户信息 这个方法一般用不到
     GetInfo ({ commit }) {
       return new Promise((resolve, reject) => {
         getInfo().then(response => {
@@ -66,12 +68,13 @@ const user = {
             // role.permissionList = role.permissions.map(permission => { return permission.permissionId })
             commit('SET_ROLES', result.role)
             commit('SET_INFO', result)
+            Vue.ls.set(PERMISSION, Array.isArray(result.role) ? result.role : result.role.split(','))
           } else {
             reject(new Error('getInfo: roles must be a non-null array !'))
           }
 
-          commit('SET_NAME', { name: result.name, welcome: welcome() })
-          // commit('SET_AVATAR', result.avatar)
+          commit('SET_NAME', { name: result.name })
+          commit('SET_AVATAR', result.avatar)
 
           resolve(response)
         }).catch(error => {
@@ -91,6 +94,8 @@ const user = {
           commit('SET_TOKEN', '')
           commit('SET_ROLES', [])
           Vue.ls.remove(ACCESS_TOKEN)
+          Vue.ls.remove(PERMISSION)
+          Vue.ls.remove(USER_INFO)
         })
       })
     }
