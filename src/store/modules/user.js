@@ -44,7 +44,6 @@ const user = {
           Vue.ls.set(USER_INFO, result)
           // TODO:1.mock移到server端
           // 2.修改axios
-          // 6.减小clone的包大小
           // 7.调研是否可以在生产模式中动态修改主题颜色(理论上可以因为可以动态修改色弱模式),并且将这个按钮放在用户设置中
 
           // 已完成内容:
