@@ -8,9 +8,9 @@ import { PERMISSION } from '@/store/mutation-types'
  * @param route
  * @returns {boolean}
  */
-function hasPermission (roles, route) {
+export function hasPermission (roles, route) {
   if (route.meta && route.meta.roles) {
-    return route.meta.roles.every(s => roles.includes(s))
+    return route.meta.roles.some(s => roles.includes(s))
   }
   return true
 }
@@ -31,7 +31,7 @@ function hasRole(roles, route) {
   }
 }
 
-function filterAsyncRouter (routerMap, roles) {
+export function filterAsyncRouter (routerMap, roles) {
   const accessedRouters = routerMap.filter(route => {
     if (hasPermission(roles, route)) {
       if (route.children && route.children.length) {

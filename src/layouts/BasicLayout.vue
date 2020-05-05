@@ -73,6 +73,11 @@ import GlobalFooter from '@/components/GlobalFooter'
 import SettingDrawer from '@/components/SettingDrawer'
 import { convertRoutes } from '@/utils/routeConvert'
 
+// ones:修改路由逻辑
+import { constantRouterMap } from '@/config/router.config'
+import { hasPermission, filterAsyncRouter } from '@/store/modules/permission'
+import { PERMISSION } from '@/store/mutation-types'
+
 export default {
   name: 'BasicLayout',
   mixins: [mixin, mixinDevice],
@@ -87,14 +92,15 @@ export default {
     return {
       production: config.production,
       collapsed: false,
-      menus: []
+      menus: [],
+      mainMenu: constantRouterMap
     }
   },
   computed: {
-    ...mapState({
-      // 动态主路由
-      mainMenu: state => state.permission.addRouters
-    }),
+    // ...mapState({
+    //   // 动态主路由
+    //   mainMenu: state => state.permission.addRouters
+    // }),
     contentPaddingLeft () {
       if (!this.fixSidebar || this.isMobile()) {
         return '0'
@@ -111,7 +117,8 @@ export default {
     }
   },
   created () {
-    const routes = convertRoutes(this.mainMenu.find(item => item.path === '/'))
+    const orginRoutes = filterAsyncRouter(this.mainMenu, this.$ls.get(PERMISSION))
+    const routes = convertRoutes(orginRoutes.find(item => item.path === '/'))
     this.menus = (routes && routes.children) || []
     this.collapsed = !this.sidebarOpened
   },
