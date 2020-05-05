@@ -1,27 +1,24 @@
 <template>
   <a-dropdown>
     <span class="action global-lang">
-      <a-icon type="global" style="font-size: 16px"/>
+      <a-icon
+        type="global"
+        style="font-size: 16px;margin-right:5px"
+      />{{ txt }}
     </span>
-    <a-menu slot="overlay" style="width: 150px;" @click="SwitchLang">
-      <a-menu-item key="zh-CN">
+    <a-menu
+      slot="overlay"
+      style="width: 150px;"
+      @click="SwitchLang"
+    >
+      <a-menu-item key="cn">
         <a rel="noopener noreferrer">
-          <span role="img" aria-label="简体中文">🇨🇳</span> 简体中文
+          {{ cnTxt }}
         </a>
       </a-menu-item>
-      <a-menu-item key="zh-TW">
+      <a-menu-item key="en">
         <a rel="noopener noreferrer">
-          <span role="img" aria-label="繁体中文">🇭🇰</span> 繁体中文
-        </a>
-      </a-menu-item>
-      <a-menu-item key="en-US">
-        <a rel="noopener noreferrer">
-          <span role="img" aria-label="English">🇬🇧</span> English
-        </a>
-      </a-menu-item>
-      <a-menu-item key="pt-BR">
-        <a rel="noopener noreferrer">
-          <span role="img" aria-label="Português">🇧🇷</span> Português
+          {{ enTxt }}
         </a>
       </a-menu-item>
     </a-menu>
@@ -30,17 +27,25 @@
 
 <script>
 // import { mixin as langMixin } from '@/store/i18n-mixin'
-
 export default {
   name: 'LangSelect',
   // mixins: [langMixin],
   data () {
-    return {}
+    return {
+      txt: null,
+      cnTxt: '简体中文',
+      enTxt: 'English'
+    }
+  },
+  created () {
+    this.txt = window.localStorage.getItem('lang') === 'en' ? this.enTxt : this.cnTxt
   },
   methods: {
-    // SwitchLang (row) {
-    //   this.setLang(row.key)
-    // }
+    SwitchLang ({ key }) {
+      window.localStorage.setItem('lang', key)
+      this.txt = key === 'en' ? this.enTxt : this.cnTxt
+      window.location.reload()
+    }
   }
 }
 </script>

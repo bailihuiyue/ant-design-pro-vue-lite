@@ -42,7 +42,7 @@ const user = {
           Vue.ls.set(ACCESS_TOKEN, result.token, 7 * 24 * 60 * 60 * 1000)
           Vue.ls.set(PERMISSION, Array.isArray(result.role) ? result.role : result.role.split(','))
           Vue.ls.set(USER_INFO, result)
-          // TODO:1.mock移到server端 2.修改axios 3.格式化问题不要报错,改成警告 4.去掉登录后显示的欢迎5.添加语言切换按钮 6.减小clone的包大小
+          // TODO:1.mock移到server端 2.修改axios 6.减小clone的包大小 7.调研是否可以在生产模式中动态修改主题颜色(理论上可以因为可以动态修改色弱模式),并且将这个按钮放在用户设置中
           commit('SET_TOKEN', result.token)
           resolve()
         }).catch(error => {

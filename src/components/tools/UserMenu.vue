@@ -35,6 +35,12 @@
               <span>账户设置</span>
             </router-link>
           </a-menu-item>
+          <a-menu-item key="4" @click="showSystemSetting">
+            <a>
+              <a-icon type="setting" />
+              <span>系统设置</span>
+            </a>
+          </a-menu-item>
           <a-menu-item
             key="2"
             disabled
@@ -101,7 +107,17 @@ export default {
         },
         onCancel () {}
       })
+    },
+    showSystemSetting () {
+      console.log(123)
     }
   }
 }
 </script>
+<style lang="less">
+.user-dropdown-menu-wrapper {
+  .ant-dropdown-menu-item {
+    width: 100% !important;
+  }
+}
+</style>

@@ -16,13 +16,8 @@
       <route-view></route-view>
 
       <div class="footer">
-        <div class="links">
-          <a href="_self">帮助</a>
-          <a href="_self">隐私</a>
-          <a href="_self">条款</a>
-        </div>
         <div class="copyright">
-          Copyright &copy; 2018 白鹭学园技术组出品
+          Copyright &copy; 2020 ant design pro lite
         </div>
       </div>
     </div>
@@ -67,7 +62,7 @@ export default {
       min-height: 100%;
       background: #f0f2f5 url(~@/assets/background.svg) no-repeat 50%;
       background-size: 100%;
-      padding: 110px 0 144px;
+      padding: 110px 0 130px;
       position: relative;
 
       a {
