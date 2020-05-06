@@ -1,4 +1,15 @@
-[English](./README.md) | 简体中文
+TODO:
+在生产模式中动态修改主题颜色
+
+已完成内容:
+ 本系统基于ant deign pro vue 官方精简完成, 基于2.0.2tag, 所缺少的文件都可以通过拷贝源文件复制过来
+ 本系统分为两个版本,一般精简(master)和极度精简(simplify),其中一般精简只修改了路由逻辑,按照权限分配(admin,common uer),而不是原版的按照菜单分配(table,list等等),极度精简版就是精简一切能精简的功能,精简之前的路由文件保留了下来,名字为xxx_bak.js
+ 精简文件
+ 精简路由(去掉了异步路由的过程,也不需要在router.beforeEach中动态加载)
+ 国际化
+ 精简登录 (删除手机号登录内容,需要的话可以从官方2.0.2tag复制)
+ mock移到server端之前的mock方式类似于走本地,看不到xhr,不方便调试,现在使用项目根目录下的mock文件夹内的文件,需要安装vsccode插件EasyMock - Mock server
+ 修改简化axios使用
 
 <h1 align="center">Ant Design Pro Vue</h1>
 <div align="center">
