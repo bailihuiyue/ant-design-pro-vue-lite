@@ -48,12 +48,6 @@ export const constantRouterMap = [
             meta: { title: '监控页（外部）', target: '_blank' }
           },
           {
-            path: 'workplace',
-            name: 'Workplace',
-            component: () => import('@/views/dashboard/Workplace'),
-            meta: { title: '工作台', keepAlive: true, roles: ['admin'] }
-          },
-          {
             path: 'test-work',
             name: 'TestWork',
             component: () => import('@/views/dashboard/TestWork'),

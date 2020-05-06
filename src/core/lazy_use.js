@@ -9,8 +9,8 @@ import Viser from 'viser-vue'
 // ext library
 import VueClipboard from 'vue-clipboard2'
 import VueCropper from 'vue-cropper'
-import MultiTab from '@/components/MultiTab'
-import PageLoading from '@/components/PageLoading'
+import MultiTab from '@/proComponents/MultiTab'
+import PageLoading from '@/proComponents/PageLoading'
 import PermissionHelper from '@/utils/helper/permission'
 import './directives/action'
 

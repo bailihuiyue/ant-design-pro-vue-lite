@@ -24,11 +24,7 @@
             {rules: [{ required: true, message: '请输入帐户名' }, { validator: handleUsernameOrEmail }], validateTrigger: 'change'}
           ]"
         >
-          <a-icon
-            slot="prefix"
-            type="user"
-            :style="{ color: 'rgba(0,0,0,.25)' }"
-          />
+          <a-icon slot="prefix" type="user" :style="{ color: 'rgba(0,0,0,.25)' }" />
         </a-input>
       </a-form-item>
 
@@ -43,16 +39,12 @@
             {rules: [{ required: true, message: '请输入密码' }], validateTrigger: 'blur'}
           ]"
         >
-          <a-icon
-            slot="prefix"
-            type="lock"
-            :style="{ color: 'rgba(0,0,0,.25)' }"
-          />
+          <a-icon slot="prefix" type="lock" :style="{ color: 'rgba(0,0,0,.25)' }" />
         </a-input>
       </a-form-item>
       <a-form-item>
         <a-checkbox v-decorator="['rememberMe', { valuePropName: 'checked' }]">{{ $t('autoLogin') }}</a-checkbox>
-        <LangSelect style="float:right;cursor:pointer"/>
+        <LangSelect style="float:right;cursor:pointer" />
       </a-form-item>
 
       <a-form-item style="margin-top:24px">
@@ -70,9 +62,9 @@
 </template>
 
 <script>
-import LangSelect from '@/components/tools/LangSelect'
-import { mapActions } from 'vuex'
-import { timeFix } from '@/utils/util'
+import LangSelect from '@/proComponents/tools/LangSelect'
+import { login } from '@/services/login'
+import { ACCESS_TOKEN, PERMISSION, USER_INFO } from '@/store/mutation-types'
 
 export default {
   components: {
@@ -95,7 +87,6 @@ export default {
     }
   },
   methods: {
-    ...mapActions(['Login', 'Logout']),
     // handler
     handleUsernameOrEmail (rule, value, callback) {
       const { state } = this
@@ -118,7 +109,7 @@ export default {
 
       validateFields(['username', 'password'], { force: true }, (err, values) => {
         if (!err) {
-          Login(values)
+          login(values)
             .then(res => this.loginSuccess(res))
             .catch(err => this.requestFailed(err))
             .finally(() => {
@@ -132,6 +123,10 @@ export default {
       })
     },
     loginSuccess (res) {
+      this.$ls.set(ACCESS_TOKEN, res.token, 7 * 24 * 60 * 60 * 1000)
+      this.$ls.set(PERMISSION, Array.isArray(res.role) ? res.role : res.role.split(','))
+      this.$ls.set(USER_INFO, res)
+
       this.$router.push({ path: '/' })
       this.isLoginError = false
     },

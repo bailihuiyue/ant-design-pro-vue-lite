@@ -145,13 +145,13 @@
 <script>
 // @ is an alias to /src
 
-import Trend from '@/components/Trend'
-import AvatarList from '@/components/AvatarList'
-import CountDown from '@/components/CountDown/CountDown'
-import Ellipsis from '@/components/Ellipsis'
-import NumberInfo from '@/components/NumberInfo'
-import TagSelect from '@/components/TagSelect'
-import { DescriptionList, TagCloud } from '@/components/'
+import Trend from '@/proComponents/Trend'
+import AvatarList from '@/proComponents/AvatarList'
+import CountDown from '@/proComponents/CountDown/CountDown'
+import Ellipsis from '@/proComponents/Ellipsis'
+import NumberInfo from '@/proComponents/NumberInfo'
+import TagSelect from '@/proComponents/TagSelect'
+import { DescriptionList, TagCloud } from '@/proComponents/'
 
 const AvatarListItem = AvatarList.AvatarItem
 const TagSelectOption = TagSelect.Option

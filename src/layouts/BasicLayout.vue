@@ -67,10 +67,10 @@ import { mixin, mixinDevice } from '@/utils/mixin'
 import config from '@/config/defaultSettings'
 
 import RouteView from './RouteView'
-import SideMenu from '@/components/Menu/SideMenu'
-import GlobalHeader from '@/components/GlobalHeader'
-import GlobalFooter from '@/components/GlobalFooter'
-import SettingDrawer from '@/components/SettingDrawer'
+import SideMenu from '@/proComponents/Menu/SideMenu'
+import GlobalHeader from '@/proComponents/GlobalHeader'
+import GlobalFooter from '@/proComponents/GlobalFooter'
+import SettingDrawer from '@/proComponents/SettingDrawer'
 import { convertRoutes } from '@/utils/routeConvert'
 
 // ones:修改路由逻辑

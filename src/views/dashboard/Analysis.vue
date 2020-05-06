@@ -213,7 +213,7 @@
 
 <script>
 import moment from 'moment'
-import { ChartCard, MiniArea, MiniBar, MiniProgress, RankList, Bar, Trend, NumberInfo, MiniSmoothArea } from '@/components'
+import { ChartCard, MiniArea, MiniBar, MiniProgress, RankList, Bar, Trend, NumberInfo, MiniSmoothArea } from '@/proComponents'
 import { mixinDevice } from '@/utils/mixin'
 
 const barData = []

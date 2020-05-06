@@ -53,7 +53,7 @@
 
 <script>
 import { mapState } from 'vuex'
-import PageHeader from '@/components/PageHeader'
+import PageHeader from '@/proComponents/PageHeader'
 
 export default {
   name: 'PageView',
