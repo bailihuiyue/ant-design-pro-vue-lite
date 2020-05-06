@@ -147,8 +147,8 @@
             </a-list>
           </div>
         </div>
-        <a-divider />
-        <div :style="{ marginBottom: '24px' }">
+        <a-divider v-if="!production"/>
+        <div :style="{ marginBottom: '24px' }" v-if="!production">
           <a-button
             @click="doCopy"
             icon="copy"
@@ -162,9 +162,8 @@
           </a-alert>
         </div>
       </div>
-      <div class="setting-drawer-index-handle" @click="toggle" slot="handle">
-        <a-icon type="setting" v-if="!visible"/>
-        <a-icon type="close" v-else/>
+      <div class="setting-drawer-index-handle" slot="handle" v-if="visible" @click="hideSystemSetting">
+        <a-icon type="close"/>
       </div>
     </a-drawer>
   </div>
@@ -176,6 +175,7 @@ import SettingItem from './SettingItem'
 import config from '@/config/defaultSettings'
 import { updateTheme, updateColorWeak, colorList } from './settingConfig'
 import { mixin, mixinDevice } from '@/utils/mixin'
+import { mapMutations, mapState } from 'vuex'
 
 export default {
   components: {
@@ -185,12 +185,21 @@ export default {
   mixins: [mixin, mixinDevice],
   data () {
     return {
-      visible: false,
-      colorList
+      // visible: false,
+      colorList,
+      production: config.production
     }
   },
   watch: {
-
+  },
+  computed: {
+    ...mapState({
+      visible: state => {
+        const a = state.app.showSettings
+        debugger
+        return a
+      }
+    })
   },
   mounted () {
     updateTheme(this.primaryColor)
@@ -199,14 +208,12 @@ export default {
     }
   },
   methods: {
-    showDrawer () {
-      this.visible = true
-    },
+    ...mapMutations(['SET_SETTING_DRAWER']),
     onClose () {
-      this.visible = false
+      this.SET_SETTING_DRAWER(false)
     },
-    toggle () {
-      this.visible = !this.visible
+    hideSystemSetting () {
+      this.SET_SETTING_DRAWER(false)
     },
     onColorWeak (checked) {
       this.$store.dispatch('ToggleWeak', checked)

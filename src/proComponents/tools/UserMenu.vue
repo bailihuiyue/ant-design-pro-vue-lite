@@ -53,6 +53,7 @@ import Vue from 'vue'
 import NoticeIcon from '@/proComponents/NoticeIcon'
 import { logout } from '@/services/login'
 import { ACCESS_TOKEN, PERMISSION, USER_INFO } from '@/store/mutation-types'
+import { mapMutations } from 'vuex'
 
 export default {
   name: 'UserMenu',
@@ -67,6 +68,7 @@ export default {
     }
   },
   methods: {
+    ...mapMutations(['SET_SETTING_DRAWER']),
     handleLogout () {
       this.$confirm({
         title: '提示',
@@ -83,7 +85,7 @@ export default {
       })
     },
     showSystemSetting () {
-      console.log(123)
+      this.SET_SETTING_DRAWER(true)
     }
   }
 }
