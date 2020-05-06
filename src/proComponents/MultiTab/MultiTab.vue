@@ -160,3 +160,46 @@ export default {
   }
 }
 </script>
+<style lang="less">
+.tab_style() {
+  .ant-tabs-card-bar {
+    padding-left: 0;
+    .ant-tabs-nav-container {
+      .ant-tabs-tab-prev:hover,.ant-tabs-tab-next:hover{
+        // width: 22px;
+        background-color: rgba(0, 0, 0, 0.03);
+      }
+      font-size: 13px;
+      height: 39px;
+    }
+    .ant-tabs-tab {
+      margin-right: 0;
+      border-radius: 0px;
+      border-top: 0px;
+      line-height: 40px;
+      .anticon-close {
+        display: none;
+      }
+    }
+    .ant-tabs-tab-active {
+      padding-bottom: 0px;
+      background-color: rgba(0, 0, 0, 0.1);
+      .anticon-close {
+        display: inline-block;
+      }
+    }
+    .ant-tabs-tab:hover {
+      padding-left: 20px;
+      padding-right: 20px;
+      .anticon-close {
+        color: #333;
+        display: inline-block;
+      }
+    }
+  }
+}
+
+.ant-pro-multi-tab-wrapper {
+  .tab_style() !important;
+}
+</style>
