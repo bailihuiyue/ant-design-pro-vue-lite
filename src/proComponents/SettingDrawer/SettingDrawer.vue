@@ -196,7 +196,6 @@ export default {
     ...mapState({
       visible: state => {
         const a = state.app.showSettings
-        debugger
         return a
       }
     })
