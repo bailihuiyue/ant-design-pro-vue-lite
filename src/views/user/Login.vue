@@ -12,16 +12,16 @@
         type="error"
         showIcon
         style="margin-bottom: 24px;"
-        message="账户或密码错误（admin/ant.design )"
+        :message="$t('login.errorLogin')"
       />
       <a-form-item>
         <a-input
           size="large"
           type="text"
-          placeholder="账户: admin"
+          :placeholder="$t('login.userName')"
           v-decorator="[
             'username',
-            {rules: [{ required: true, message: '请输入帐户名' }, { validator: handleUsernameOrEmail }], validateTrigger: 'change'}
+            {rules: [{ required: true, message: $t('login.pleaseInputUserName') }, { validator: handleUsernameOrEmail }], validateTrigger: 'change'}
           ]"
         >
           <a-icon slot="prefix" type="user" :style="{ color: 'rgba(0,0,0,.25)' }" />
@@ -33,17 +33,17 @@
           size="large"
           type="password"
           autocomplete="false"
-          placeholder="密码: admin or ant.design"
+          :placeholder="$t('login.password')"
           v-decorator="[
             'password',
-            {rules: [{ required: true, message: '请输入密码' }], validateTrigger: 'blur'}
+            {rules: [{ required: true, message: $t('login.pleaseInputPassword') }], validateTrigger: 'blur'}
           ]"
         >
           <a-icon slot="prefix" type="lock" :style="{ color: 'rgba(0,0,0,.25)' }" />
         </a-input>
       </a-form-item>
       <a-form-item>
-        <a-checkbox v-decorator="['rememberMe', { valuePropName: 'checked' }]">{{ $t('autoLogin') }}</a-checkbox>
+        <a-checkbox v-decorator="['rememberMe', { valuePropName: 'checked' }]">{{ $t('login.autoLogin') }}</a-checkbox>
         <LangSelect style="float:right;cursor:pointer" />
       </a-form-item>
 
@@ -55,7 +55,7 @@
           class="login-button"
           :loading="state.loginBtn"
           :disabled="state.loginBtn"
-        >{{ $t('login') }}</a-button>
+        >{{ $t('login.login') }}</a-button>
       </a-form-item>
     </a-form>
   </div>

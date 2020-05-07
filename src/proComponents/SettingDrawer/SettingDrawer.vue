@@ -12,12 +12,12 @@
       <div class="setting-drawer-index-content">
 
         <div :style="{ marginBottom: '24px' }">
-          <h3 class="setting-drawer-index-title">整体风格设置</h3>
+          <h3 class="setting-drawer-index-title">{{ $t('settingDrawer.globalStyleSetting') }}</h3>
 
           <div class="setting-drawer-index-blockChecbox">
             <a-tooltip>
               <template slot="title">
-                暗色菜单风格
+                {{ $t('settingDrawer.darkStyle') }}
               </template>
               <div class="setting-drawer-index-item" @click="handleMenuTheme('dark')">
                 <img src="https://gw.alipayobjects.com/zos/rmsportal/LCkqqYNmvBEbokSDscrm.svg" alt="dark">
@@ -29,7 +29,7 @@
 
             <a-tooltip>
               <template slot="title">
-                亮色菜单风格
+                {{ $t('settingDrawer.lightStyle') }}
               </template>
               <div class="setting-drawer-index-item" @click="handleMenuTheme('light')">
                 <img src="https://gw.alipayobjects.com/zos/rmsportal/jpRkZQMyYRryryPNtyIC.svg" alt="light">
@@ -42,8 +42,7 @@
         </div>
 
         <div :style="{ marginBottom: '24px' }">
-          <h3 class="setting-drawer-index-title">主题色</h3>
-
+          <h3 class="setting-drawer-index-title"> {{ $t('settingDrawer.theme') }}</h3>
           <div style="height: 20px">
             <a-tooltip class="setting-drawer-theme-color-colorBlock" v-for="(item, index) in colorList" :key="index">
               <template slot="title">
@@ -59,12 +58,12 @@
         <a-divider />
 
         <div :style="{ marginBottom: '24px' }">
-          <h3 class="setting-drawer-index-title">导航模式</h3>
+          <h3 class="setting-drawer-index-title"> {{ $t('settingDrawer.navigationMode') }}</h3>
 
           <div class="setting-drawer-index-blockChecbox">
             <a-tooltip>
               <template slot="title">
-                侧边栏导航
+                 {{ $t('settingDrawer.sidebarNavigater') }}
               </template>
               <div class="setting-drawer-index-item" @click="handleLayout('sidemenu')">
                 <img src="https://gw.alipayobjects.com/zos/rmsportal/JopDzEhOqwOjeNTXkoje.svg" alt="sidemenu">
@@ -76,7 +75,7 @@
 
             <a-tooltip>
               <template slot="title">
-                顶部栏导航
+                {{ $t('settingDrawer.topNavigater') }}
               </template>
               <div class="setting-drawer-index-item" @click="handleLayout('topmenu')">
                 <img src="https://gw.alipayobjects.com/zos/rmsportal/KDNDBbriJhLwuqMoxcAr.svg" alt="topmenu">
@@ -91,36 +90,36 @@
               <a-list-item>
                 <a-tooltip slot="actions">
                   <template slot="title">
-                    该设定仅 [顶部栏导航] 时有效
+                    {{ $t('settingDrawer.onlyValid') }}
                   </template>
                   <a-select size="small" style="width: 80px;" :defaultValue="contentWidth" @change="handleContentWidthChange">
-                    <a-select-option value="Fixed">固定</a-select-option>
-                    <a-select-option value="Fluid" v-if="layoutMode !== 'sidemenu'">流式</a-select-option>
+                    <a-select-option value="Fixed">{{ $t('settingDrawer.fixation') }}</a-select-option>
+                    <a-select-option value="Fluid" v-if="layoutMode !== 'sidemenu'">{{ $t('settingDrawer.fluid') }}</a-select-option>
                   </a-select>
                 </a-tooltip>
                 <a-list-item-meta>
-                  <div slot="title">内容区域宽度</div>
+                  <div slot="title">{{ $t('settingDrawer.contentWidth') }}</div>
                 </a-list-item-meta>
               </a-list-item>
               <a-list-item>
                 <a-switch slot="actions" size="small" :defaultChecked="fixedHeader" @change="handleFixedHeader" />
                 <a-list-item-meta>
-                  <div slot="title">固定 Header</div>
+                  <div slot="title">{{ $t('settingDrawer.fixHeader') }}</div>
                 </a-list-item-meta>
               </a-list-item>
               <a-list-item>
                 <a-switch slot="actions" size="small" :disabled="!fixedHeader" :defaultChecked="autoHideHeader" @change="handleFixedHeaderHidden" />
                 <a-list-item-meta>
                   <a-tooltip slot="title" placement="left">
-                    <template slot="title">固定 Header 时可配置</template>
-                    <div :style="{ opacity: !fixedHeader ? '0.5' : '1' }">下滑时隐藏 Header</div>
+                    <template slot="title">{{ $t('settingDrawer.configurableWhenFixingHeaders') }}</template>
+                    <div :style="{ opacity: !fixedHeader ? '0.5' : '1' }">{{ $t('settingDrawer.hideHeaders') }}</div>
                   </a-tooltip>
                 </a-list-item-meta>
               </a-list-item>
               <a-list-item >
                 <a-switch slot="actions" size="small" :disabled="(layoutMode === 'topmenu')" :defaultChecked="fixSiderbar" @change="handleFixSiderbar" />
                 <a-list-item-meta>
-                  <div slot="title" :style="{ textDecoration: layoutMode === 'topmenu' ? 'line-through' : 'unset' }">固定侧边菜单</div>
+                  <div slot="title" :style="{ textDecoration: layoutMode === 'topmenu' ? 'line-through' : 'unset' }">{{ $t('settingDrawer.fixedSideMenu') }}</div>
                 </a-list-item-meta>
               </a-list-item>
             </a-list>
@@ -129,19 +128,19 @@
         <a-divider />
 
         <div :style="{ marginBottom: '24px' }">
-          <h3 class="setting-drawer-index-title">其他设置</h3>
+          <h3 class="setting-drawer-index-title">{{ $t('settingDrawer.otherSettings') }}</h3>
           <div>
             <a-list :split="false">
               <a-list-item>
                 <a-switch slot="actions" size="small" :defaultChecked="colorWeak" @change="onColorWeak" />
                 <a-list-item-meta>
-                  <div slot="title">色弱模式</div>
+                  <div slot="title">{{ $t('settingDrawer.colorBlindness') }}</div>
                 </a-list-item-meta>
               </a-list-item>
               <a-list-item>
                 <a-switch slot="actions" size="small" :defaultChecked="multiTab" @change="onMultiTab" />
                 <a-list-item-meta>
-                  <div slot="title">多页签模式</div>
+                  <div slot="title">{{ $t('settingDrawer.multiTab') }}</div>
                 </a-list-item-meta>
               </a-list-item>
             </a-list>
@@ -153,10 +152,10 @@
             @click="doCopy"
             icon="copy"
             block
-          >拷贝设置</a-button>
+          >{{ $t('settingDrawer.copySettings') }}</a-button>
           <a-alert type="warning" :style="{ marginTop: '24px' }">
             <span slot="message">
-              配置栏只在开发环境用于预览，生产环境不会展现，请手动修改配置文件。修改配置文件后，需要清空本地缓存和LocalStorage
+              {{ $t('settingDrawer.words') }}
               <a href="https://github.com/sendya/ant-design-pro-vue/blob/master/src/config/defaultSettings.js" target="_blank">src/config/defaultSettings.js</a>
             </span>
           </a-alert>

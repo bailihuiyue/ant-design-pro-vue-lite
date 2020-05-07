@@ -28,18 +28,18 @@
           <a-menu-item key="4" @click="showSystemSetting">
             <a>
               <a-icon type="setting" />
-              <span>系统设置</span>
+              <span>{{ $t('userMenu.systemConfig') }}</span>
             </a>
           </a-menu-item>
           <a-menu-item key="2" disabled>
             <a-icon type="setting" />
-            <span>测试</span>
+            <span>{{ $t('userMenu.test') }}</span>
           </a-menu-item>
           <a-menu-divider />
           <a-menu-item key="3">
             <a href="javascript:;" @click="handleLogout">
               <a-icon type="logout" />
-              <span>退出登录</span>
+              <span>{{ $t('userMenu.logout') }}</span>
             </a>
           </a-menu-item>
         </a-menu>
@@ -71,8 +71,8 @@ export default {
     ...mapMutations(['SET_SETTING_DRAWER']),
     handleLogout () {
       this.$confirm({
-        title: '提示',
-        content: '真的要注销登录吗 ?',
+        title: this.$t('userMenu.tip'),
+        content: this.$t('userMenu.checkLogout'),
         onOk: () => {
           logout().then(res => {
             Vue.ls.remove(ACCESS_TOKEN)

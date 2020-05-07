@@ -24,7 +24,7 @@ export const constantRouterMap = [
     path: '/',
     name: 'index',
     component: BasicLayout,
-    meta: { title: '首页' },
+    meta: { title: 'menu.index' },
     redirect: '/dashboard/analysis',
     children: [
       // dashboard
@@ -33,25 +33,25 @@ export const constantRouterMap = [
         name: 'dashboard',
         redirect: '/dashboard/analysis',
         component: RouteView,
-        meta: { title: '仪表盘', keepAlive: true, icon: bxAnaalyse, roles: ['admin'] },
+        meta: { title: 'menu.dashboard', keepAlive: true, icon: bxAnaalyse, roles: ['admin'] },
         children: [
           {
             path: 'analysis/:pageNo([1-9]\\d*)?',
             name: 'Analysis',
             component: () => import('@/views/dashboard/Analysis'),
-            meta: { title: '分析页', keepAlive: false, roles: ['admin'] }
+            meta: { title: 'menu.analysis', keepAlive: false, roles: ['admin'] }
           },
           // 外部链接
           {
             path: 'https://www.baidu.com/',
             name: 'Monitor',
-            meta: { title: '监控页（外部）', target: '_blank' }
+            meta: { title: 'menu.monitor', target: '_blank' }
           },
           {
             path: 'test-work',
             name: 'TestWork',
             component: () => import('@/views/dashboard/TestWork'),
-            meta: { title: '测试功能', keepAlive: true, roles: ['admin'] }
+            meta: { title: 'menu.testFun', keepAlive: true, roles: ['admin'] }
           }
         ]
       },
@@ -60,7 +60,7 @@ export const constantRouterMap = [
         name: 'dashboard1',
         redirect: '/dashboard1/403',
         component: RouteView,
-        meta: { title: '测试', keepAlive: true, icon: bxAnaalyse, roles: ['admin'] },
+        meta: { title: 'menu.test', keepAlive: true, icon: bxAnaalyse, roles: ['admin'] },
         children: [
           {
             path: '403',
