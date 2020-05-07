@@ -10,7 +10,7 @@ import { PERMISSION } from '@/store/mutation-types'
  */
 function hasPermission (roles, route) {
   if (route.meta && route.meta.roles) {
-    return route.meta.roles.every(s => roles.includes(s))
+    return route.meta.roles.some(s => roles.includes(s))
   }
   return true
 }
