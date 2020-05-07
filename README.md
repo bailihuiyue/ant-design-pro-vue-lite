@@ -1,6 +1,6 @@
 TODO:
-在生产模式中动态修改主题颜色
 完整汉化/英文化
+黑夜模式
 
 已完成内容:
  本系统基于ant deign pro vue 官方精简完成, 基于2.0.2tag, 所缺少的文件都可以通过拷贝源文件复制过来
@@ -12,6 +12,7 @@ TODO:
  mock移到server端之前的mock方式类似于走本地,看不到xhr,不方便调试,现在使用项目根目录下的mock文件夹内的文件,需要安装vsccode插件EasyMock - Mock server
  修改简化axios使用
  美化多标签样式
+ 在生产模式中动态修改主题颜色(目前使用笨办法,就是编译多套主题,目前放在了public/themes下面,文件比较大,所以放了个zip包,需要主题的朋友解压就行了,有时间会优化成动态生成添加到style标签中)
 
 <h1 align="center">Ant Design Pro Vue</h1>
 <div align="center">

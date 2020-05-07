@@ -65,6 +65,7 @@
 import LangSelect from '@/proComponents/tools/LangSelect'
 import { login } from '@/services/login'
 import { ACCESS_TOKEN, PERMISSION, USER_INFO } from '@/store/mutation-types'
+import { updateTheme } from '@/proComponents/SettingDrawer/settingConfig'
 
 export default {
   components: {
@@ -85,6 +86,10 @@ export default {
         smsSendBtn: false
       }
     }
+  },
+  created () {
+    const DEFAULT_COLOR = this.$ls.get('DEFAULT_COLOR')
+    DEFAULT_COLOR && updateTheme(DEFAULT_COLOR)
   },
   methods: {
     // handler
