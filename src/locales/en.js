@@ -44,6 +44,8 @@ export default {
     grayMode: 'Gray mode',
     multiTab: 'Multi-tab mode',
     copySettings: 'Copy Settings',
-    words: 'The configuration bar is only used for preview in the development environment, but not in the production environment. Please modify the configuration file manually. After modifying the configuration file, you need to clear the local cache and localstorage'
+    words: 'The configuration bar is only used for preview in the development environment, but not in the production environment. Please modify the configuration file manually. After modifying the configuration file, you need to clear the local cache and localstorage',
+    testFun: 'Test function',
+    darkMode: 'Dark mode'
   }
 }

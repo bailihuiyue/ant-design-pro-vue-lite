@@ -44,6 +44,8 @@ export default {
     grayMode: '黑白模式',
     multiTab: '多页签模式',
     copySettings: '拷贝设置',
-    words: '配置栏只在开发环境用于预览，生产环境不会展现，请手动修改配置文件。修改配置文件后，需要清空本地缓存和LocalStorage'
+    words: '配置栏只在开发环境用于预览，生产环境不会展现，请手动修改配置文件。修改配置文件后，需要清空本地缓存和LocalStorage',
+    testFun: '试验功能',
+    darkMode: '黑夜模式'
   }
 }

@@ -1,5 +1,4 @@
 TODO:
-黑夜模式
 整理文档
 
 已完成内容:
@@ -15,7 +14,7 @@ TODO:
  在生产模式中动态修改主题颜色(目前使用笨办法,就是编译多套主题,目前放在了public/themes下面,文件比较大,所以放了个zip包,需要主题的朋友解压就行了,有时间会优化成动态生成添加到style标签中)
  完整汉化/英文化
  黑白模式
-  
+ 黑夜模式(测试功能,移植于ant design 4.0,目前设置后记得要把黑色的文字变白,否则页面一团黑)
 <h1 align="center">Ant Design Pro Vue</h1>
 <div align="center">
 An out-of-box UI solution for enterprise applications as a Vue boilerplate. based on  <a href="https://vuecomponent.github.io/ant-design-vue/docs/vue/introduce-cn/" target="_blank">Ant Design of Vue</a>

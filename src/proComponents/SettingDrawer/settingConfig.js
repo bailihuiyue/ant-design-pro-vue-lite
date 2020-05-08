@@ -41,14 +41,23 @@ const colorList = [
 
 const updateTheme = newPrimaryColor => {
   const isPrimaryColor = newPrimaryColor === config.primaryColor
+  let styleTag = document.getElementById('changeThemeColor')
+  if (!styleTag) {
+    styleTag = document.createElement('link')
+    styleTag.setAttribute('id', 'changeThemeColor')
+    document.head.appendChild(styleTag)
+  }
+  styleTag.setAttribute('href', isPrimaryColor ? '' : `./themes/${newPrimaryColor.split('#')[1]}.css`)
+}
 
-    let styleTag = document.getElementById('changeThemeColor')
-    if (!styleTag) {
-      styleTag = document.createElement('link')
-      styleTag.setAttribute('id', 'changeThemeColor')
-      document.head.appendChild(styleTag)
-    }
-    styleTag.setAttribute('href', isPrimaryColor ? '' : `./themes/${newPrimaryColor.split('#')[1]}.css`)
+const setDarkMode = isDark => {
+  let styleTag = document.getElementById('darkMode')
+  if (!styleTag) {
+    styleTag = document.createElement('link')
+    styleTag.setAttribute('id', 'darkMode')
+    document.head.appendChild(styleTag)
+  }
+  styleTag.setAttribute('href', isDark ? './themes/dark.css' : '')
 }
 
 // const updateTheme = newPrimaryColor => {
@@ -130,4 +139,4 @@ const updateGrayMode = grayMode => {
   grayMode ? app.classList.add('grayMode') : app.classList.remove('grayMode')
 }
 
-export { updateTheme, colorList, updateColorWeak, updateGrayMode }
+export { updateTheme, colorList, updateColorWeak, updateGrayMode, setDarkMode }

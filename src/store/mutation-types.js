@@ -12,6 +12,7 @@ export const DEFAULT_CONTENT_WIDTH_TYPE = 'DEFAULT_CONTENT_WIDTH_TYPE'
 export const DEFAULT_MULTI_TAB = 'DEFAULT_MULTI_TAB'
 export const PERMISSION = 'PERMISSION'
 export const USER_INFO = 'User_Info'
+export const DARK_MODE = 'DARK_MODE'
 
 export const CONTENT_WIDTH_TYPE = {
   Fluid: 'Fluid',
