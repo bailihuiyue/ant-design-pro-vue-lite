@@ -27,7 +27,9 @@ An out-of-box UI solution for enterprise applications as a Vue boilerplate. base
 
 ###### BUGS:
 
+
 1.itle使用i18n 导致router.beforeEach取不到$t,因此无法动态写入中英文to.meta.title,导致无法动态更新网页title,待修复
+
 2.目前设置完黑夜模式后再设置主题颜色不管用了, 黑夜模式不完全匹配当前项目
 
 [![Backers on Open Collective](https://opencollective.com/ant-design-pro-vue/backers/badge.svg)](#backers) [![Sponsors on Open Collective](https://opencollective.com/ant-design-pro-vue/sponsors/badge.svg)](#sponsors) [![License](https://img.shields.io/npm/l/package.json.svg?style=flat)](https://github.com/sendya/ant-design-pro-vue/blob/master/LICENSE)
