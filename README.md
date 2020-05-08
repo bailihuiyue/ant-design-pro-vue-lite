@@ -1,26 +1,35 @@
-TODO:
-整理文档
 
-已完成内容:
- 本系统基于ant deign pro vue 官方精简完成, 基于2.0.2tag, 所缺少的文件都可以通过拷贝源文件复制过来
- 本系统分为两个版本,一般精简(master)和极度精简(simplify),其中一般精简只修改了路由逻辑,按照权限分配(admin,common uer),而不是原版的按照菜单分配(table,list等等),极度精简版就是精简一切能精简的功能,精简之前的路由文件保留了下来,名字为xxx_bak.js
- 精简文件
- 精简路由(去掉了异步路由的过程,也不需要在router.beforeEach中动态加载)
- 国际化
- 精简登录 (删除手机号登录内容,需要的话可以从官方2.0.2tag复制)
- mock移到server端之前的mock方式类似于走本地,看不到xhr,不方便调试,现在使用项目根目录下的mock文件夹内的文件,需要安装vsccode插件EasyMock - Mock server
- 修改简化axios使用
- 美化多标签样式
- 在生产模式中动态修改主题颜色(目前使用笨办法,就是编译多套主题,目前放在了public/themes下面,文件比较大,所以放了个zip包,需要主题的朋友解压就行了,有时间会优化成动态生成添加到style标签中)
- 完整汉化/英文化
- 黑白模式
- 黑夜模式(测试功能,移植于ant design 4.0,目前设置后记得要把黑色的文字变白,否则页面一团黑)
+
 <h1 align="center">Ant Design Pro Vue</h1>
 <div align="center">
 An out-of-box UI solution for enterprise applications as a Vue boilerplate. based on  <a href="https://vuecomponent.github.io/ant-design-vue/docs/vue/introduce-cn/" target="_blank">Ant Design of Vue</a>
 </div>
-
 <div align="center">
+
+##### 各位朋友好,基于该项目的精简增强版来啦!
+
+> ​    本系统基于ant deign pro vue 官方精简完成, 基于2.0.2tag, 所缺少的文件都可以通过拷贝源文件复制过来,
+>  系统分为两个版本,一般精简(master)和极度精简(simplify),其中一般精简只修改了路由逻辑,按照权限分配(admin,common uer),而不是原版的按照菜单分配(table,list等等),极度精简版就是精简一切能精简的功能,精简之前的路由文件保留了下来,名字为xxx_bak.js
+
+###### 相比较于原版,该版本做了如下改动:
+
+
+1. 精简文件(包括精简登录,删除手机号登录内容,需要的话可以从官方2.0.2tag复制)
+2. 精简路由(去掉了异步路由的过程,也不需要在router.beforeEach中动态加载,可随时还原)
+3. 完整的国际化包括菜单,多标签,按钮等等
+4. 右侧设置栏在生产环境中也可以使用了
+5. mock移到server端:之前的mock方式类似于走本地,看不到xhr,不方便调试,现在使用项目根目录下的mock文件夹内的文件,需要安装vsccode插件EasyMock - Mock server,然后按F1启动一个server
+6. 修改简化axios使用
+7. 美化多标签样式
+8. 在生产模式中动态修改主题颜色(目前使用笨办法,就是编译多套主题,目前放在了public/themes下面,文件比较大,所以放了个zip包,需要主题的朋友解压就行了,有时间会优化成动态生成添加到style标签中)
+9. 黑白模式(遭遇重大事故的黑白页面)
+10. 黑夜模式(测试功能,移植于ant design 4.0,目前设置后记得要把黑色的文字变白,否则页面一团黑)
+11. 更多功能,敬请期待....
+
+###### BUGS:
+
+​    1.itle使用i18n 导致router.beforeEach取不到$t,因此无法动态写入中英文to.meta.title,导致无法动态更新网页title,待修复
+​    2.目前设置完黑夜模式后再设置主题颜色不管用了, 黑夜模式不完全匹配当前项目
 
 [![Backers on Open Collective](https://opencollective.com/ant-design-pro-vue/backers/badge.svg)](#backers) [![Sponsors on Open Collective](https://opencollective.com/ant-design-pro-vue/sponsors/badge.svg)](#sponsors) [![License](https://img.shields.io/npm/l/package.json.svg?style=flat)](https://github.com/sendya/ant-design-pro-vue/blob/master/LICENSE)
 [![Release](https://img.shields.io/github/release/sendya/ant-design-pro-vue.svg?style=flat)](https://github.com/sendya/ant-design-pro-vue/releases/latest)
@@ -123,24 +132,6 @@ Modern browsers and IE10.
 | IE10, Edge | last 2 versions | last 2 versions | last 2 versions | last 2 versions |
 
 
-## Contributors
-
-This project exists thanks to all the people who contribute. 
-<a href="https://github.com/sendya/ant-design-pro-vue/graphs/contributors"><img src="https://opencollective.com/ant-design-pro-vue/contributors.svg?width=890&button=false" /></a>
-
-
-## Backers
-
-Thank you to all our backers! 🙏 [[Become a backer](https://opencollective.com/ant-design-pro-vue#backer)]
-
-<a href="https://opencollective.com/ant-design-pro-vue#backers" target="_blank"><img src="https://opencollective.com/ant-design-pro-vue/backers.svg?width=890"></a>
-
-
-## Sponsors
-
-Support this project by becoming a sponsor. Your logo will show up here with a link to your website. [[Become a sponsor](https://opencollective.com/ant-design-pro-vue#sponsor)]
-
-<a href="https://opencollective.com/ant-design-pro-vue/sponsor/0/website" target="_blank"><img src="https://opencollective.com/ant-design-pro-vue/sponsor/0/avatar.svg"></a>
 <a href="https://opencollective.com/ant-design-pro-vue/sponsor/1/website" target="_blank"><img src="https://opencollective.com/ant-design-pro-vue/sponsor/1/avatar.svg"></a>
 <a href="https://opencollective.com/ant-design-pro-vue/sponsor/2/website" target="_blank"><img src="https://opencollective.com/ant-design-pro-vue/sponsor/2/avatar.svg"></a>
 <a href="https://opencollective.com/ant-design-pro-vue/sponsor/3/website" target="_blank"><img src="https://opencollective.com/ant-design-pro-vue/sponsor/3/avatar.svg"></a>

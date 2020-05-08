@@ -69,7 +69,4 @@ export function removeLoadingAnimate (id = '', timeout = 1500) {
 export const baseURL =
   process.env.NODE_ENV === 'development'
     ? 'http://localhost:9999'
-    //  ?"http://hswcfc-invoice-checking-queue-api.uat.homecredit.cn/invoice-checking-queue-api"
-      // ?"http://10.64.84.21:8080/invoice-checking-queue-api" //longhua
-      // ?'http://10.64.84.5:8080/' //yuyang
-      : window.baseURL // 环境配置
+      : window.baseURL
