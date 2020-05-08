@@ -4,7 +4,7 @@
 <div align="center">
 An out-of-box UI solution for enterprise applications as a Vue boilerplate. based on  <a href="https://vuecomponent.github.io/ant-design-vue/docs/vue/introduce-cn/" target="_blank">Ant Design of Vue</a>
 </div>
-<div align="center">
+<div align="center"/>
 
 ##### 各位朋友好,基于该项目的精简增强版来啦!
 
