@@ -138,6 +138,12 @@
                 </a-list-item-meta>
               </a-list-item>
               <a-list-item>
+                <a-switch slot="actions" size="small" :defaultChecked="grayMode" @change="onGrayMode" />
+                <a-list-item-meta>
+                  <div slot="title">{{ $t('settingDrawer.grayMode') }}</div>
+                </a-list-item-meta>
+              </a-list-item>
+              <a-list-item>
                 <a-switch slot="actions" size="small" :defaultChecked="multiTab" @change="onMultiTab" />
                 <a-list-item-meta>
                   <div slot="title">{{ $t('settingDrawer.multiTab') }}</div>
@@ -172,7 +178,7 @@
 import { DetailList } from '@/proComponents'
 import SettingItem from './SettingItem'
 import config from '@/config/defaultSettings'
-import { updateTheme, updateColorWeak, colorList } from './settingConfig'
+import { updateTheme, updateColorWeak, colorList, updateGrayMode } from './settingConfig'
 import { mixin, mixinDevice } from '@/utils/mixin'
 import { mapMutations, mapState } from 'vuex'
 
@@ -193,16 +199,16 @@ export default {
   },
   computed: {
     ...mapState({
-      visible: state => {
-        const a = state.app.showSettings
-        return a
-      }
+      visible: state => state.app.showSettings
     })
   },
   mounted () {
     updateTheme(this.primaryColor)
     if (this.colorWeak !== config.colorWeak) {
       updateColorWeak(this.colorWeak)
+    }
+    if (this.grayMode !== config.grayMode) {
+      updateGrayMode(this.grayMode)
     }
   },
   methods: {
@@ -216,6 +222,10 @@ export default {
     onColorWeak (checked) {
       this.$store.dispatch('ToggleWeak', checked)
       updateColorWeak(checked)
+    },
+    onGrayMode (checked) {
+      this.$store.dispatch('ToggleGray', checked)
+      updateGrayMode(checked)
     },
     onMultiTab (checked) {
       this.$store.dispatch('ToggleMultiTab', checked)
@@ -234,6 +244,7 @@ export default {
   fixSiderbar: ${this.fixSiderbar}, // sticky siderbar
   autoHideHeader: ${this.autoHideHeader}, //  auto hide header
   colorWeak: ${this.colorWeak},
+  grayMode: ${this.grayMode},
   multiTab: ${this.multiTab},
   production: process.env.NODE_ENV === 'production' && process.env.VUE_APP_PREVIEW !== 'true',
   // vue-ls options

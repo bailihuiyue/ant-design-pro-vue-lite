@@ -125,4 +125,9 @@ const updateColorWeak = colorWeak => {
   colorWeak ? app.classList.add('colorWeak') : app.classList.remove('colorWeak')
 }
 
-export { updateTheme, colorList, updateColorWeak }
+const updateGrayMode = grayMode => {
+  const app = document.body.querySelector('#app')
+  grayMode ? app.classList.add('grayMode') : app.classList.remove('grayMode')
+}
+
+export { updateTheme, colorList, updateColorWeak, updateGrayMode }

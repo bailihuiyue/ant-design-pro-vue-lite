@@ -3,6 +3,7 @@
  * primaryColor - 默认主题色, 如果修改颜色不生效，请清理 localStorage
  * navTheme - sidebar theme ['dark', 'light'] 两种主题
  * colorWeak - 色盲模式
+ * grayMode - 黑白模式
  * layout - 整体布局方式 ['sidemenu', 'topmenu'] 两种布局
  * fixedHeader - 固定 Header : boolean
  * fixSiderbar - 固定左侧菜单栏 ： boolean
@@ -22,6 +23,7 @@ export default {
   fixSiderbar: false, // sticky siderbar
   autoHideHeader: false, //  auto hide header
   colorWeak: false,
+  grayMode: false,
   multiTab: false,
   production: process.env.NODE_ENV === 'production' && process.env.VUE_APP_PREVIEW !== 'true',
   // vue-ls options

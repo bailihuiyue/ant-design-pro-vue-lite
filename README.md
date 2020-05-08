@@ -1,7 +1,5 @@
 TODO:
-完整汉化/英文化
 黑夜模式
-黑白模式
 整理文档
 
 已完成内容:
@@ -15,7 +13,9 @@ TODO:
  修改简化axios使用
  美化多标签样式
  在生产模式中动态修改主题颜色(目前使用笨办法,就是编译多套主题,目前放在了public/themes下面,文件比较大,所以放了个zip包,需要主题的朋友解压就行了,有时间会优化成动态生成添加到style标签中)
-
+ 完整汉化/英文化
+ 黑白模式
+  
 <h1 align="center">Ant Design Pro Vue</h1>
 <div align="center">
 An out-of-box UI solution for enterprise applications as a Vue boilerplate. based on  <a href="https://vuecomponent.github.io/ant-design-vue/docs/vue/introduce-cn/" target="_blank">Ant Design of Vue</a>

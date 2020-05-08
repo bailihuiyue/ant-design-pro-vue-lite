@@ -5,6 +5,7 @@ import {
   DEFAULT_LAYOUT_MODE,
   DEFAULT_COLOR,
   DEFAULT_COLOR_WEAK,
+  DEFAULT_COLOR_GRAY,
   DEFAULT_FIXED_HEADER,
   DEFAULT_FIXED_SIDEMENU,
   DEFAULT_FIXED_HEADER_HIDDEN,
@@ -25,6 +26,7 @@ const app = {
     autoHideHeader: false,
     color: null,
     weak: false,
+    gray: false,
     multiTab: true,
     showSettings: false
   },
@@ -73,6 +75,10 @@ const app = {
       Vue.ls.set(DEFAULT_COLOR_WEAK, flag)
       state.weak = flag
     },
+    TOGGLE_GRAY: (state, flag) => {
+      Vue.ls.set(DEFAULT_COLOR_GRAY, flag)
+      state.gray = flag
+    },
     TOGGLE_MULTI_TAB: (state, bool) => {
       Vue.ls.set(DEFAULT_MULTI_TAB, bool)
       state.multiTab = bool
@@ -117,6 +123,9 @@ const app = {
     },
     ToggleWeak ({ commit }, weakFlag) {
       commit('TOGGLE_WEAK', weakFlag)
+    },
+    ToggleGray ({ commit }, grayFlag) {
+      commit('TOGGLE_GRAY', grayFlag)
     },
     ToggleMultiTab ({ commit }, bool) {
       commit('TOGGLE_MULTI_TAB', bool)
