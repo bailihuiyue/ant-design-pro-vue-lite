@@ -77,6 +77,7 @@ import { convertRoutes } from '@/utils/routeConvert'
 import { constantRouterMap } from '@/config/router.config'
 import { hasPermission, filterAsyncRouter } from '@/store/modules/permission'
 import { PERMISSION } from '@/store/mutation-types'
+import cloneDeep from 'lodash.clonedeep'
 
 export default {
   name: 'BasicLayout',
@@ -93,7 +94,7 @@ export default {
       production: config.production,
       collapsed: false,
       menus: [],
-      mainMenu: constantRouterMap
+      mainMenu: cloneDeep(constantRouterMap)
     }
   },
   computed: {
