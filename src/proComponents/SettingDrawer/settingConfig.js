@@ -2,7 +2,7 @@ import { message } from 'ant-design-vue/es'
 // import defaultSettings from '../defaultSettings';
 import themeColor from './themeColor.js'
 import config from '@/config/defaultSettings'
-// let lessNodesAppended
+let lessNodesAppended
 
 const colorList = [
   {
@@ -39,17 +39,6 @@ const colorList = [
   }
 ]
 
-const updateTheme = newPrimaryColor => {
-  const isPrimaryColor = newPrimaryColor === config.primaryColor
-  let styleTag = document.getElementById('changeThemeColor')
-  if (!styleTag) {
-    styleTag = document.createElement('link')
-    styleTag.setAttribute('id', 'changeThemeColor')
-    document.head.appendChild(styleTag)
-  }
-  styleTag.setAttribute('href', isPrimaryColor ? '' : `./themes/${newPrimaryColor.split('#')[1]}.css`)
-}
-
 const setDarkMode = isDark => {
   let styleTag = document.getElementById('darkMode')
   if (!styleTag) {
@@ -69,18 +58,30 @@ const setDarkMode = isDark => {
 //   })
 // }
 
-/*
+// 动态引入编译好的css,已弃用
+// const updateTheme = newPrimaryColor => {
+//   const isPrimaryColor = newPrimaryColor === config.primaryColor
+//   let styleTag = document.getElementById('changeThemeColor')
+//   if (!styleTag) {
+//     styleTag = document.createElement('link')
+//     styleTag.setAttribute('id', 'changeThemeColor')
+//     document.head.appendChild(styleTag)
+//   }
+//   styleTag.setAttribute('href', isPrimaryColor ? '' : `./themes/${newPrimaryColor.split('#')[1]}.css`)
+// }
+
+// TODO:动态引入less,在线编译任何颜色
 const updateTheme = primaryColor => {
   // Don't compile less in production!
-  /* if (process.env.NODE_ENV === 'production') {
-    return;
-  } * /
+  // if (process.env.NODE_ENV === 'production') {
+  //   return
+  // }
   // Determine if the component is remounted
   if (!primaryColor) {
     return
   }
   const hideMessage = message.loading('正在编译主题！', 0)
-  function buildIt () {
+  function buildIt() {
     if (!window.less) {
       return
     }
@@ -126,7 +127,6 @@ const updateTheme = primaryColor => {
     buildIt()
   }
 }
-*/
 
 const updateColorWeak = colorWeak => {
   // document.body.className = colorWeak ? 'colorWeak' : '';
