@@ -1,0 +1,24 @@
+{
+  "eslint.format.enable": true, // eslint格式化开启
+  "editor.formatOnSave": true,
+  //  #让prettier使用eslint的代码格式进行校验
+  "prettier.eslintIntegration": true,
+  //  #去掉代码结尾的分号
+  "prettier.semi": true,
+  //  #使用带引号替代双引号
+  "prettier.singleQuote": true,
+  //  #让函数(名)和后面的括号之间加个空格
+  "javascript.format.insertSpaceBeforeFunctionParenthesis": false,
+  // #让vue中的js按编辑器自带的ts格式进行格式化
+  "vetur.format.defaultFormatter.js": "vscode-typescript",
+  "vetur.format.defaultFormatterOptions": {
+    "js-beautify-html": {
+      "wrap_attributes": "auto",
+      // #vue组件中html代码格式化样式
+    },
+  },
+  "vetur.format.defaultFormatter.html": "prettyhtml",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+}
