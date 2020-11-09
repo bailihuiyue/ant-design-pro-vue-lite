@@ -58,7 +58,7 @@ const setDarkMode = isDark => {
 //   })
 // }
 
-// 动态引入编译好的css,已弃用
+// 动态引入编译好的css,已弃用(public/themes可以删除了)
 // const updateTheme = newPrimaryColor => {
 //   const isPrimaryColor = newPrimaryColor === config.primaryColor
 //   let styleTag = document.getElementById('changeThemeColor')
@@ -73,31 +73,32 @@ const setDarkMode = isDark => {
 // TODO:动态引入less,在线编译任何颜色
 const updateTheme = primaryColor => {
   // Don't compile less in production!
-  // if (process.env.NODE_ENV === 'production') {
-  //   return
-  // }
+  /* if (process.env.NODE_ENV === 'production') {
+    return;
+  } */
   // Determine if the component is remounted
   if (!primaryColor) {
     return
   }
   const hideMessage = message.loading('正在编译主题！', 0)
+  console.info(`正在编译主题!`)
   function buildIt() {
-    if (!window.less) {
+    // 正确的判定less是否已经加载less.modifyVars可用
+    if (!window.less || !window.less.modifyVars) {
       return
     }
-    setTimeout(() => {
-      window.less
-        .modifyVars({
-          '@primary-color': primaryColor
-        })
-        .then(() => {
-          hideMessage()
-        })
-        .catch(() => {
-          message.error('Failed to update theme')
-          hideMessage()
-        })
-    }, 200)
+    // less.modifyVars可用
+    window.less
+      .modifyVars({
+        '@primary-color': primaryColor
+      })
+      .then(() => {
+        hideMessage()
+      })
+      .catch(() => {
+        message.error('Failed to update theme')
+        hideMessage()
+      })
   }
   if (!lessNodesAppended) {
     // insert less.js and color.less
@@ -105,7 +106,7 @@ const updateTheme = primaryColor => {
     const lessConfigNode = document.createElement('script')
     const lessScriptNode = document.createElement('script')
     lessStyleNode.setAttribute('rel', 'stylesheet/less')
-    lessStyleNode.setAttribute('href', '/color.less')
+    lessStyleNode.setAttribute('href', './color.less')
     lessConfigNode.innerHTML = `
       window.less = {
         async: true,
