@@ -1,4 +1,4 @@
-const types = {
+export default {
   403: {
     img: 'https://gw.alipayobjects.com/zos/rmsportal/wZcnGqRDyhPOEYFcZDnb.svg',
     title: '403',
@@ -15,5 +15,3 @@ const types = {
     desc: '抱歉，服务器出错了'
   }
 }
-
-export default types

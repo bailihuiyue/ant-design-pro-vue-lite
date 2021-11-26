@@ -14,10 +14,12 @@ import './permission' // permission control
 import './utils/filter' // global filter
 import './proComponents/global.less'
 import { Dialog } from '@/proComponents'
+import VueCompositionAPI from '@vue/composition-api'
 
 Vue.config.productionTip = false
 
 Vue.use(Dialog)
+Vue.use(VueCompositionAPI)
 
 new Vue({
   router,

@@ -2,7 +2,7 @@ const path = require('path')
 const webpack = require('webpack')
 const createThemeColorReplacerPlugin = require('./config/plugin.config')
 
-function resolve (dir) {
+function resolve(dir) {
   return path.join(__dirname, dir)
 }
 
@@ -29,13 +29,46 @@ function resolve (dir) {
 // vue.config.js
 const vueConfig = {
   configureWebpack: {
+    entry: {
+      app: './src/main.ts'
+    },
+    resolve: {
+      extensions: ['.js', '.vue', '.json', '.ts'],
+      alias: {
+        '@': resolve('src')
+      }
+    },
     // webpack plugins
     plugins: [
       // Ignore all locale files of moment.js
       new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
-    ]
+    ],
     // if prod, add externals
     // externals: isProd ? assetsCDN.externals : {}
+
+    module: {
+      rules: [
+        {
+          test: /\.(js|vue)$/,
+          loader: 'eslint-loader',
+          enforce: 'pre',
+          include: [resolve('src'), resolve('test')],
+          options: {
+            formatter: require('eslint-friendly-formatter')
+          }
+        },
+        // 从这里复制下面的代码就可以了
+        {
+          test: /\.tsx?$/,
+          loader: 'ts-loader',
+          exclude: /node_modules/,
+          options: {
+            appendTsSuffixTo: [/\.vue$/],
+          }
+        },
+        // 复制以上的
+      ]
+    },
   },
 
   chainWebpack: (config) => {

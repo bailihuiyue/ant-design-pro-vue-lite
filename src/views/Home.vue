@@ -151,7 +151,7 @@ import CountDown from '@/proComponents/CountDown/CountDown'
 import Ellipsis from '@/proComponents/Ellipsis'
 import NumberInfo from '@/proComponents/NumberInfo'
 import TagSelect from '@/proComponents/TagSelect'
-import { DescriptionList, TagCloud } from '@/proComponents/'
+import { DescriptionList, TagCloud } from '@/proComponents'
 
 const AvatarListItem = AvatarList.AvatarItem
 const TagSelectOption = TagSelect.Option

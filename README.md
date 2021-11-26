@@ -23,7 +23,8 @@ An out-of-box UI solution for enterprise applications as a Vue boilerplate. base
 8. 在生产模式中动态修改主题颜色(目前使用笨办法,就是编译多套主题,目前放在了public/themes下面,文件比较大,所以放了个zip包,需要主题的朋友解压就行了,有时间会优化成动态生成添加到style标签中)
 9. 黑白模式(遭遇重大事故的黑白页面)
 10. 黑夜模式(测试功能,移植于ant design 4.0,目前设置后记得要把黑色的文字变白,否则页面一团黑)
-11. 更多功能,敬请期待....
+11. 可以使用typescript,进行开发,添加@vue/composition-api,可以模拟vue3语法开发项目,setup(props,{root})中的root等价于原写法的this
+12. 更多功能,敬请期待....
 
 ###### BUGS:
 
