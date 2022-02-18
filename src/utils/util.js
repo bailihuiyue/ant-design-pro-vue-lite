@@ -66,6 +66,11 @@ export function removeLoadingAnimate (id = '', timeout = 1500) {
   }, timeout)
 }
 
+export const firstLetterIsUpperCase = function (str) {
+  var reg = /^[A-Z][A-z0-9]*$/;
+  return reg.test(str);
+};
+
 export const baseURL =
   process.env.NODE_ENV === 'development'
     ? 'http://localhost:9999'

@@ -32,6 +32,10 @@
         "src/*"
       ]
     },
-    "baseUrl": "."
+    "baseUrl": ".",
+    "types": [
+      "node",
+      "webpack-env"
+  ]
   }
 }
